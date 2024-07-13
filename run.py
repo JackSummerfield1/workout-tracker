@@ -24,3 +24,20 @@ class Exercise:
         # Handles load calculation (Total weight lifted by the user)
         total_load = self.weight * self.reps
         return total_load
+
+def main():
+    '''
+    Handles all functions and classes
+    '''
+    print('*' * 35)
+    print('\nWelcome to ASUMA Fitness Tracker\n')
+    print('*' * 35)
+    print('\n1. Add Workout\n')
+    print('2. View Workouts\n')
+    print('3. Edit Workout\n')
+    print('4. Delete Workout\n')
+    print('5. Exit\n')
+    print('*' * 35)
+    # Code above is simply decoration to the terminal menu
+
+main()
