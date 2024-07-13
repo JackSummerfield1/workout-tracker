@@ -8,3 +8,7 @@ class Exercise:
         self.reps = reps
         self.weight = weight
 
+    def calculate_load(self):
+        # Handles load calculation (Total weight lifted by the user)
+        total_load = self.weight * self.reps
+        return total_load
