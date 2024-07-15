@@ -75,15 +75,21 @@ def date_valid():
 
 
 def exercise_valid():
+    '''
+    Handles all exercises attributes, ensuring all data input is valid and
+    abides by the boundaries set.
+    '''
     while True:
+        # Ensures a valid exercise is provided, no integers or strings longer than 16 char
         exercise_type = input(
-            'Please enter your desired exercise. (E.g. Push-up or Pull-up)\n')
+            'Please enter your desired exercise. (E.g. Pushup or Pullup)\n')
         if len(exercise_type) <= 16 and exercise_type.isalpha():
             break
         else:
             continue
 
     while True:
+        # Ensures a valid amount of sets are provided, must be a feasible integer between 1 and 5
         try:
             sets = int(
                 input('Please enter the amount of sets you wish to complete. (E.g. 3)\n'))
@@ -95,6 +101,7 @@ def exercise_valid():
             print('Value entered is invalid.')
 
     while True:
+        # Ensures a valid amount of reps are allocated, must be a reasonable integer in range 6 - 15
         try:
             reps = int(input(
                 'Please enter the amount of reps you wish to complete per set. (Must be in range: 6 - 15)\n'))
@@ -106,6 +113,7 @@ def exercise_valid():
             print('Value entered is invalid.')
 
     while True:
+        # Ensures a valid weight is specified, must be humanely possible, hence the range provided (1 - 500kg)
         try:
             weight = int(
                 input('Please enter the weight being moved in kg. (E.g. 75)\n'))
