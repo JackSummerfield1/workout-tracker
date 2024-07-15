@@ -95,12 +95,15 @@ def exercise_valid():
             print('Value entered is invalid.')
 
     while True:
-        reps = int(input(
-            'Please enter the amount of reps you wish to complete per set. (Must be in range: 6 - 15)\n'))
-        if reps <= 15 and reps >= 6:
-            return True
-        else:
-            continue
+        try:
+            reps = int(input(
+                'Please enter the amount of reps you wish to complete per set. (Must be in range: 6 - 15)\n'))
+            if reps <= 15 and reps >= 6:
+                break
+            else:
+                continue
+        except ValueError:
+            print('Value entered is invalid.')
 
     while True:
         weight = int(
