@@ -52,7 +52,7 @@ def date_valid():
     while True:
         # While loop used so that if user input is invalid, the code loops back through until valid date entered
         date = input(
-            'Please enter a date for this workout in the format DD/MM/YYYY')
+            'Please enter a date for this workout in the format DD/MM/YYYY.\n')
 
         def is_date(date):
             '''
@@ -74,12 +74,30 @@ def date_valid():
             print(f"The date entered ({date}) is invalid.")
 
 
+def exercise_valid():
+    exercise_type = input(
+        'Please enter your desired exercise. (E.g. Push-up or Pull-up)\n')
+    sets = int(
+        input('Please enter the amount of sets you wish to complete. (E.g. 3)\n'))
+    reps = int(input(
+        'Please enter the amount of reps you wish to complete per set. (Must be in range: 6 - 15)\n'))
+    weight = int(
+        input('Please enter the weight being moved in kg. (E.g. 75)\n'))
+    exercise_attr = Exercise(exercise_type, sets, reps, weight)
+    print(f"Exercise Type: {exercise_attr.exercise_type}\n")
+    print(f"Sets: {exercise_attr.sets}\n")
+    print(f"Reps: {exercise_attr.reps}\n")
+    print(f"Weight: {exercise_attr.weight}\n")
+    print(f"Total Load: {exercise_attr.calculate_load()}")
+
+
 def add_workout():
     '''
     Handles the user adding a workout to their program, including a variety of
     relevant attributes
     '''
-    date_valid()
+    # date_valid()
+    exercise_valid()
 
 
 def user_choice():
