@@ -42,6 +42,7 @@ class Exercise:
 
     def calculate_load(self):
         # Handles load calculation (Total weight lifted by the user)
+        global total_load
         total_load = self.weight * self.reps
         return total_load
 
@@ -66,6 +67,7 @@ def date_valid():
     '''
     while True:
         # While loop used so that if user input is invalid, the code loops back through until valid date entered
+        global date
         date = input(
             'Please enter a date for this workout in the format DD/MM/YYYY.\n')
 
@@ -83,6 +85,7 @@ def date_valid():
 
         if is_date(date):
             print(f"The date entered ({date}) is valid.")
+
             break
             # Terminal breaks from the code once a valid date is entered
         else:
@@ -96,6 +99,7 @@ def exercise_valid():
     '''
     while True:
         # Ensures a valid exercise is provided, no integers or strings longer than 16 char
+        global exercise_type
         exercise_type = input(
             'Please enter your desired exercise. (E.g. Pushup or Pullup)\n')
         if len(exercise_type) <= 16 and exercise_type.isalpha():
@@ -106,6 +110,7 @@ def exercise_valid():
     while True:
         # Ensures a valid amount of sets are provided, must be a feasible integer between 1 and 5
         try:
+            global sets
             sets = int(
                 input('Please enter the amount of sets you wish to complete. (E.g. 3)\n'))
             if sets <= 5 and sets > 0:
@@ -118,6 +123,7 @@ def exercise_valid():
     while True:
         # Ensures a valid amount of reps are allocated, must be a reasonable integer in range 6 - 15
         try:
+            global reps
             reps = int(input(
                 'Please enter the amount of reps you wish to complete per set. (Must be in range: 6 - 15)\n'))
             if reps <= 15 and reps >= 6:
@@ -130,6 +136,7 @@ def exercise_valid():
     while True:
         # Ensures a valid weight is specified, must be humanely possible, hence the range provided (1 - 500kg)
         try:
+            global weight
             weight = int(
                 input('Please enter the weight being moved in kg. (E.g. 75)\n'))
             if weight <= 500 and weight > 0:
@@ -189,3 +196,6 @@ def main():
 
 # main()
 add_workout()
+
+row = [date, exercise_type, sets, reps, weight, total_load]
+workouts.append_row(row)
