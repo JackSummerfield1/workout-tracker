@@ -106,12 +106,15 @@ def exercise_valid():
             print('Value entered is invalid.')
 
     while True:
-        weight = int(
-            input('Please enter the weight being moved in kg. (E.g. 75)\n'))
-        if weight <= 500 and weight > 0:
-            return True
-        else:
-            continue
+        try:
+            weight = int(
+                input('Please enter the weight being moved in kg. (E.g. 75)\n'))
+            if weight <= 500 and weight > 0:
+                break
+            else:
+                continue
+        except ValueError:
+            print('Value entered is invalid.')
 
     exercise_attr = Exercise(exercise_type, sets, reps, weight)
     print(f"Exercise Type: {exercise_attr.exercise_type}\n")
