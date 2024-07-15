@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class User:
     '''
     Creates an instance of User
@@ -42,6 +45,31 @@ def menu_decorator():
     # Code above is simply decoration to the terminal menu
 
 
+def add_workout():
+    '''
+    Handles the user adding a workout to their program, including a variety of
+    relevant attributes
+    '''
+    date = input(
+        'Please enter a date for this workout in the format DD/MM/YYYY')
+
+    def is_date(date):
+        '''
+        Handles date validation, ensures a correct date is entered in the provided format
+        Credit to Max O'Didily with help on this: https://www.youtube.com/watch?v=5n_JagFqWeg
+        '''
+        try:
+            date_object = datetime.strptime(date, '%d/%m/%Y')
+            return True
+        except ValueError:
+            return False
+
+    if is_date(date):
+        print(f"The date entered ({date}) is valid.")
+    else:
+        print(f"The date entered ({date}) is invalid.")
+
+
 def user_choice():
     '''
     Handles the users choice on what they want to do, ie. add, edit, view or delete workouts.
@@ -73,4 +101,5 @@ def main():
     user_choice()
 
 
-main()
+# main()
+add_workout()
