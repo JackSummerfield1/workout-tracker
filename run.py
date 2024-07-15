@@ -42,11 +42,35 @@ def menu_decorator():
     # Code above is simply decoration to the terminal menu
 
 
+def user_choice():
+    '''
+    Handles the users choice on what they want to do, ie. add, edit, view or delete workouts.
+    Use of a while loop to ensure the value entered is a number between 1-5, any values out of this range
+    causes an error message to be displayed and the code is reiterated through the while loop.
+    '''
+    while True:
+        # Makes sure a valid option must be entered
+        user_input = input('\nSelect an option, 1 - 5:\n\n')
+        if user_input == '1':
+            break
+        elif user_input == '2':
+            break
+        elif user_input == '3':
+            break
+        elif user_input == '4':
+            break
+        elif user_input == '5':
+            break
+        else:
+            print('Invalid option, please choose another operation.')
+
+
 def main():
     '''
     Handles all functions and classes
     '''
     menu_decorator()
+    user_choice()
 
 
 main()
