@@ -75,8 +75,13 @@ def date_valid():
 
 
 def exercise_valid():
-    exercise_type = input(
-        'Please enter your desired exercise. (E.g. Push-up or Pull-up)\n')
+    while True:
+        exercise_type = input(
+            'Please enter your desired exercise. (E.g. Push-up or Pull-up)\n')
+        if len(exercise_type) <= 16 and exercise_type.isalpha():
+            return True
+        else:
+            continue
     sets = int(
         input('Please enter the amount of sets you wish to complete. (E.g. 3)\n'))
     reps = int(input(
