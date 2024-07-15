@@ -84,12 +84,15 @@ def exercise_valid():
             continue
 
     while True:
-        sets = int(
-            input('Please enter the amount of sets you wish to complete. (E.g. 3)\n'))
-        if sets <= 5 and sets > 0:
-            return True
-        else:
-            continue
+        try:
+            sets = int(
+                input('Please enter the amount of sets you wish to complete. (E.g. 3)\n'))
+            if sets <= 5 and sets > 0:
+                break
+            else:
+                continue
+        except ValueError:
+            print('Value entered is invalid.')
 
     while True:
         reps = int(input(
