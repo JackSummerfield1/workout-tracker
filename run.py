@@ -137,7 +137,7 @@ def add_workout():
     Handles the user adding a workout to their program, including a variety of
     relevant attributes
     '''
-    # date_valid()
+    date_valid()
     exercise_valid()
 
 
