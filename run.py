@@ -46,6 +46,9 @@ def menu_decorator():
 
 
 def date_valid():
+    '''
+    Handles correct date entered, loops back through if incorrect date is entered.
+    '''
     while True:
         # While loop used so that if user input is invalid, the code loops back through until valid date entered
         date = input(
