@@ -79,7 +79,7 @@ def exercise_valid():
         exercise_type = input(
             'Please enter your desired exercise. (E.g. Push-up or Pull-up)\n')
         if len(exercise_type) <= 16 and exercise_type.isalpha():
-            return True
+            break
         else:
             continue
 
