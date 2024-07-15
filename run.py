@@ -99,8 +99,14 @@ def exercise_valid():
         else:
             continue
 
-    weight = int(
-        input('Please enter the weight being moved in kg. (E.g. 75)\n'))
+    while True:
+        weight = int(
+            input('Please enter the weight being moved in kg. (E.g. 75)\n'))
+        if weight <= 500 and weight > 0:
+            return True
+        else:
+            continue
+
     exercise_attr = Exercise(exercise_type, sets, reps, weight)
     print(f"Exercise Type: {exercise_attr.exercise_type}\n")
     print(f"Sets: {exercise_attr.sets}\n")
