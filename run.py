@@ -125,11 +125,11 @@ def exercise_valid():
             print('Value entered is invalid.')
 
     exercise_attr = Exercise(exercise_type, sets, reps, weight)
-    print(f"Exercise Type: {exercise_attr.exercise_type}\n")
+    print(f"Exercise Type: {exercise_attr.exercise_type.capitalize()}\n")
     print(f"Sets: {exercise_attr.sets}\n")
-    print(f"Reps: {exercise_attr.reps}\n")
-    print(f"Weight: {exercise_attr.weight}\n")
-    print(f"Total Load: {exercise_attr.calculate_load()}")
+    print(f"Reps: x{exercise_attr.reps}\n")
+    print(f"Weight: {exercise_attr.weight}kg\n")
+    print(f"Total Load: {exercise_attr.calculate_load()}kg")
 
 
 def add_workout():
