@@ -161,6 +161,13 @@ def exercise_valid():
     print(f"Weight: {exercise_attr.weight}kg\n")
     print(f"Total Load: {exercise_attr.calculate_load()}kg")
 
+
+def save_workout():
+    print('Saving workout to google sheet...')
+    workouts.append_row(row)
+    print('Workout has been successfully saved!')
+
+
 def add_workout():
     '''
     Handles the user adding a workout to their program, including a variety of
@@ -168,6 +175,7 @@ def add_workout():
     '''
     date_valid()
     exercise_valid()
+    save_workout()
 
 
 def user_choice():
@@ -180,7 +188,7 @@ def user_choice():
         # Makes sure a valid option must be entered
         user_input = input('\nSelect an option, 1 - 5:\n\n')
         if user_input == '1':
-            break
+            add_workout()
         elif user_input == '2':
             break
         elif user_input == '3':
