@@ -213,6 +213,8 @@ def edit_workout():
     data = workouts.get_all_values()
     # Gathers all data in the worksheet
 
+    wk_num = 0
+
     while True:
         try:
             choice = int(input(
@@ -221,11 +223,15 @@ def edit_workout():
                 # Allows user to choose a workout number in the correct range
                 print(f"You have selected workout: {choice}\n")
                 # Informs the user which workout they have selected to be edited
+                wk_num = wk_num + choice
                 break
             else:
                 continue
         except ValueError:
             print('Input is invalid, please try again')
+
+    wk_to_edit = data[wk_num + 1]
+    print(wk_to_edit)
 
 
 def user_choice():
