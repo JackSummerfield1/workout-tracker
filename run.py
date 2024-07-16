@@ -206,6 +206,28 @@ def view_workouts():
     pprint(last_five_rows)
 
 
+def edit_workout():
+    '''
+    Handles workouts to be edited, selection done through workout number
+    '''
+    data = workouts.get_all_values()
+    # Gathers all data in the worksheet
+
+    while True:
+        try:
+            choice = int(input(
+                f"Please enter the number of the workout you wish to edit, num should be in range 0 - {len(data) - 2}\n"))
+            if choice == 0 or (choice <= (len(data) - 2) and choice >= 0):
+                # Allows user to choose a workout number in the correct range
+                print(f"You have selected workout: {choice}\n")
+                # Informs the user which workout they have selected to be edited
+                break
+            else:
+                continue
+        except ValueError:
+            print('Input is invalid, please try again')
+
+
 def user_choice():
     '''
     Handles the users choice on what they want to do, ie. add, edit, view or delete workouts.
@@ -238,3 +260,4 @@ def main():
 
 
 # main()
+edit_workout()
