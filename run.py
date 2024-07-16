@@ -163,9 +163,14 @@ def exercise_valid():
 
 
 def save_workout():
-    print('Saving workout to google sheet...')
+    '''
+    Handles all data inputted being inserted into the google sheet
+    '''
+    print('*' * 35)
+    print('\nSaving workout to google sheet...\n')
     workouts.append_row(row)
-    print('Workout has been successfully saved!')
+    print('Workout has been successfully saved!\n')
+    print('*' * 35)
 
 
 def add_workout():
