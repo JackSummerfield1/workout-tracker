@@ -195,6 +195,7 @@ def view_workouts():
     heading = ['Date:', 'Exercise Type:', 'Sets:',
                'Reps:', 'Weight:', 'Total Load:']
     data = last_five_rows.insert(0, heading)
+    # Inserts heading above the data so that the user understands what each value represents
     pprint(last_five_rows)
 
 
