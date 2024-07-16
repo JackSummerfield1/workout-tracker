@@ -163,6 +163,12 @@ def exercise_valid():
     print(f"Total Load: {exercise_attr.calculate_load()}kg")
 
 
+def assign_workout_num():
+    data = workouts.get_all_values()
+    num = len(data) - 1
+    row.insert(6, num)
+
+
 def save_workout():
     '''
     Handles all data inputted being inserted into the google sheet
@@ -181,6 +187,7 @@ def add_workout():
     '''
     date_valid()
     exercise_valid()
+    assign_workout_num()
     save_workout()
 
 
@@ -193,10 +200,9 @@ def view_workouts():
     last_five_rows = all_workout_rows[-5:]
     # Collates the last 5 workout entries made to the google sheet]
     heading = ['Date:', 'Exercise Type:', 'Sets:',
-               'Reps:', 'Weight:', 'Total Load:']
-    data = last_five_rows.insert(0, heading)
-    # Inserts heading above the data so that the user understands what each value represents
+               'Reps:', 'Weight:', 'Total Load:', 'Number:']
     print('\nThe 5 most recent workouts in your Google sheet are as follows:\n')
+    print(heading)
     pprint(last_five_rows)
 
 
@@ -231,4 +237,4 @@ def main():
     user_choice()
 
 
-main()
+# main()
