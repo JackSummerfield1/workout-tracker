@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
+from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -191,6 +192,10 @@ def view_workouts():
     # Gathers all of the workouts from the google sheet
     last_five_rows = all_workout_rows[-5:]
     # Collates the last 5 workout entries made to the google sheet]
+    heading = ['Date:', 'Exercise Type:', 'Sets:',
+               'Reps:', 'Weight:', 'Total Load:']
+    data = last_five_rows.insert(0, heading)
+    pprint(last_five_rows)
 
 
 def user_choice():
