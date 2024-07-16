@@ -58,7 +58,7 @@ def menu_decorator():
     print('*' * 35)
     print('\nPlease select one of the following options (1-5)...\n')
     print('1. Add Workout\n')
-    print('2. View Workouts\n')
+    print('2. View Last 5 Workouts\n')
     print('3. Edit Workout\n')
     print('4. Delete Workout\n')
     print('5. Exit\n')
