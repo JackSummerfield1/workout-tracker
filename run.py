@@ -210,7 +210,7 @@ def user_choice():
         if user_input == '1':
             add_workout()
         elif user_input == '2':
-            break
+            view_workouts()
         elif user_input == '3':
             break
         elif user_input == '4':
@@ -229,5 +229,4 @@ def main():
     user_choice()
 
 
-# main()
-view_workout()
+main()
