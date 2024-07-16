@@ -196,6 +196,7 @@ def view_workouts():
                'Reps:', 'Weight:', 'Total Load:']
     data = last_five_rows.insert(0, heading)
     # Inserts heading above the data so that the user understands what each value represents
+    print('\nThe 5 most recent workouts in your Google sheet are as follows:\n')
     pprint(last_five_rows)
 
 
