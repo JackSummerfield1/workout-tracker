@@ -233,6 +233,31 @@ def edit_workout():
     wk_to_edit = data[wk_num + 1]
     print(wk_to_edit)
 
+    while True:
+        user_input = input('\nSelect an option, 1 - 5:\n\n')
+        if user_input == '1':
+            new_date = input(
+                'Please enter the desired date for this workout:\n')
+            workouts.update_cell(wk_num + 2, 1, new_date)
+        elif user_input == '2':
+            new_exercise_type = input(
+                'Please enter the desired exercise type for this workout:\n')
+            workouts.update_cell(wk_num + 2, 2, new_exercise_type)
+        elif user_input == '3':
+            new_sets = input(
+                'Please enter the desired sets for this exercise:\n')
+            workouts.update_cell(wk_num + 2, 3, new_sets)
+        elif user_input == '4':
+            new_reps = input(
+                'Please enter the desired reps for this exercise:\n')
+            workouts.update_cell(wk_num + 2, 4, new_reps)
+        elif user_input == '5':
+            new_weight = input(
+                'Please enter the desired weight for this exercise:\n')
+            workouts.update_cell(wk_num + 2, 5, new_weight)
+        else:
+            print('Invalid option, please choose another operation.')
+
 
 def user_choice():
     '''
