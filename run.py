@@ -183,6 +183,16 @@ def add_workout():
     save_workout()
 
 
+def view_workouts():
+    '''
+    Handles printing to the terminal the last 5 workouts in the google sheet
+    '''
+    all_workout_rows = workouts.get_all_values()
+    # Gathers all of the workouts from the google sheet
+    last_five_rows = all_workout_rows[-5:]
+    # Collates the last 5 workout entries made to the google sheet]
+
+
 def user_choice():
     '''
     Handles the users choice on what they want to do, ie. add, edit, view or delete workouts.
@@ -214,4 +224,5 @@ def main():
     user_choice()
 
 
-main()
+# main()
+view_workout()
