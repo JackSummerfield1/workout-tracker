@@ -265,7 +265,7 @@ def edit_workout():
 
     while True:
         edit_menu_decorator()
-        user_input = input('\nSelect an option, 1 - 5:\n\n')
+        user_input = input('\nSelect an option, 1 - 6:\n\n')
         if user_input == '1':
             while True:
                 # While loop used so that if user input is invalid, the code loops back through until valid date entered
@@ -345,6 +345,10 @@ def edit_workout():
                         print('Invalid input. Please enter a number between 1 - 500.')
                 except ValueError:
                     print('Value entered is invalid.')
+        elif user_input == '6':
+            break
+        else:
+            print('Invalid option, please choose another operation.')
 
 
 def user_choice():
