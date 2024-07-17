@@ -264,11 +264,23 @@ def edit_workout():
     print('\nWelcome to ASUMA Workout Editor\n')
 
     while True:
+        edit_menu_decorator()
         user_input = input('\nSelect an option, 1 - 5:\n\n')
         if user_input == '1':
-            new_date = input(
-                'Please enter the desired date for this workout:\n')
-            workouts.update_cell(wk_num + 2, 1, new_date)
+            while True:
+                # While loop used so that if user input is invalid, the code loops back through until valid date entered
+                new_date = input(
+                    'Please enter the new date for this workout in the format DD/MM/YYYY.\n')
+
+                valid_date(new_date)
+
+                if valid_date(new_date):
+                    workouts.update_cell(wk_num + 2, 1, new_date)
+                    print(f"The date for workout {wk_num} "
+                          f"has been changed to {new_date}")
+                    break
+                else:
+                    print(f"The date entered ({new_date}) is invalid.")
         elif user_input == '2':
             new_exercise_type = input(
                 'Please enter the desired exercise type for this workout:\n')
