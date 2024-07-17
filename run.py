@@ -282,9 +282,17 @@ def edit_workout():
                 else:
                     print(f"The date entered ({new_date}) is invalid.")
         elif user_input == '2':
-            new_exercise_type = input(
-                'Please enter the desired exercise type for this workout:\n')
-            workouts.update_cell(wk_num + 2, 2, new_exercise_type)
+            while True:
+                # Ensures a valid exercise is provided, no integers or strings longer than 16 char
+                new_exercise_type = input(
+                    'Please enter your new exercise.\n')
+                if len(new_exercise_type) <= 16 and new_exercise_type.isalpha():
+                    workouts.update_cell(wk_num + 2, 2, new_exercise_type)
+                    print(f"The exercise type for workout {wk_num} "
+                          f"has been changed to {new_exercise_type}")
+                    break
+                else:
+                    print('Invalid input. Please enter a valid exercise type.')
         elif user_input == '3':
             new_sets = input(
                 'Please enter the desired sets for this exercise:\n')
