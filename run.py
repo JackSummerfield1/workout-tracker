@@ -79,6 +79,59 @@ def valid_date(date):
         return False
 
 
+def validate_exercise_type():
+    while True:
+        # Ensures a valid exercise is provided, no integers or strings longer than 16 char
+        exercise_type = input(
+            'Please enter your desired exercise. (E.g. Pushup or Pullup)\n')
+        if len(exercise_type) <= 16 and exercise_type.isalpha():
+            return exercise_type
+        else:
+            print('Invalid input. Please enter a valid exercise type.')
+
+
+def validate_sets():
+    while True:
+        # Ensures a valid amount of sets are provided, must be a feasible integer between 1 and 5
+        try:
+            sets = int(
+                input('Please enter the amount of sets you wish to complete. (E.g. 3)\n'))
+            if sets <= 5 and sets > 0:
+                return sets
+            else:
+                print('Invalid input. Please enter a number between 1 - 5.')
+        except ValueError:
+            print('Value entered is invalid.')
+
+
+def validate_reps():
+    while True:
+        # Ensures a valid amount of reps are allocated, must be a reasonable integer in range 6 - 15
+        try:
+            reps = int(input(
+                'Please enter the amount of reps you wish to complete per set. (Must be in range: 6 - 15)\n'))
+            if reps <= 15 and reps >= 6:
+                return reps
+            else:
+                print('Invalid input. Please enter a valid number between 6 - 15.')
+        except ValueError:
+            print('Value entered is invalid.')
+
+
+def validate_weight():
+    while True:
+        # Ensures a valid weight is specified, must be humanely possible, hence the range provided (1 - 500kg)
+        try:
+            weight = int(
+                input('Please enter the weight being moved in kg. (E.g. 75)\n'))
+            if weight <= 500 and weight > 0:
+                return weight
+            else:
+                print('Invalid input. Please enter a number between 1 - 500.')
+        except ValueError:
+            print('Value entered is invalid.')
+
+
 def date_insert():
     '''
     Handles correct date entered, loops back through if incorrect date is entered.
@@ -105,58 +158,16 @@ def exercise_valid():
     Handles all exercises attributes, ensuring all data input is valid and
     abides by the boundaries set.
     '''
-    while True:
-        # Ensures a valid exercise is provided, no integers or strings longer than 16 char
-        exercise_type = input(
-            'Please enter your desired exercise. (E.g. Pushup or Pullup)\n')
-        if len(exercise_type) <= 16 and exercise_type.isalpha():
-            row.insert(1, exercise_type)
-            # Inserts exercise_type attr at correct column on google sheet, (ind 1)
-            break
-        else:
-            continue
+    exercise_type = validate_exercise_type()
+    sets = validate_sets()
+    reps = validate_reps()
+    weight = validate_weight()
 
-    while True:
-        # Ensures a valid amount of sets are provided, must be a feasible integer between 1 and 5
-        try:
-            sets = int(
-                input('Please enter the amount of sets you wish to complete. (E.g. 3)\n'))
-            if sets <= 5 and sets > 0:
-                row.insert(2, sets)
-                # Inserts sets attr at correct column on google sheet, (ind 2)
-                break
-            else:
-                continue
-        except ValueError:
-            print('Value entered is invalid.')
-
-    while True:
-        # Ensures a valid amount of reps are allocated, must be a reasonable integer in range 6 - 15
-        try:
-            reps = int(input(
-                'Please enter the amount of reps you wish to complete per set. (Must be in range: 6 - 15)\n'))
-            if reps <= 15 and reps >= 6:
-                row.insert(3, reps)
-                # Inserts reps attr at correct column on google sheet, (ind 3)
-                break
-            else:
-                continue
-        except ValueError:
-            print('Value entered is invalid.')
-
-    while True:
-        # Ensures a valid weight is specified, must be humanely possible, hence the range provided (1 - 500kg)
-        try:
-            weight = int(
-                input('Please enter the weight being moved in kg. (E.g. 75)\n'))
-            if weight <= 500 and weight > 0:
-                row.insert(4, weight)
-                # Inserts weight attr at correct column on google sheet, (ind 3)
-                break
-            else:
-                continue
-        except ValueError:
-            print('Value entered is invalid.')
+    row.insert(1, exercise_type)
+    row.insert(2, sets)
+    row.insert(3, reps)
+    row.insert(4, weight)
+    # Insert the row into the Google Sheet
 
     exercise_attr = Exercise(exercise_type, sets, reps, weight)
     print(f"Exercise Type: {exercise_attr.exercise_type.capitalize()}\n")
