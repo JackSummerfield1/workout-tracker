@@ -294,9 +294,20 @@ def edit_workout():
                 else:
                     print('Invalid input. Please enter a valid exercise type.')
         elif user_input == '3':
-            new_sets = input(
-                'Please enter the desired sets for this exercise:\n')
-            workouts.update_cell(wk_num + 2, 3, new_sets)
+            while True:
+                try:
+                    new_sets = int(
+                        input(
+                            'Please enter the desired sets for this exercise:\n'))
+                    if new_sets <= 5 and new_sets > 0:
+                        workouts.update_cell(wk_num + 2, 3, new_sets)
+                        print(f"The sets for workout {wk_num} "
+                              f"has been changed to {new_sets}")
+                        break
+                    else:
+                        print('Invalid input. Please enter a number between 1 - 5.')
+                except ValueError:
+                    print('Value entered is invalid.')
         elif user_input == '4':
             new_reps = input(
                 'Please enter the desired reps for this exercise:\n')
