@@ -365,7 +365,7 @@ def user_choice():
         elif user_input == '2':
             view_workouts()
         elif user_input == '3':
-            break
+            edit_workout()
         elif user_input == '4':
             break
         elif user_input == '5':
@@ -383,8 +383,8 @@ def main():
 
 
 # This ensures main() runs only when the script is executed directly
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
 
 
-edit_workout()
+# edit_workout()
