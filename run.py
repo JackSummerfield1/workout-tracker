@@ -309,9 +309,24 @@ def edit_workout():
                 except ValueError:
                     print('Value entered is invalid.')
         elif user_input == '4':
-            new_reps = input(
-                'Please enter the desired reps for this exercise:\n')
-            workouts.update_cell(wk_num + 2, 4, new_reps)
+            while True:
+                # Ensures a valid amount of reps are allocated, must be a reasonable integer in range 6 - 15
+                try:
+                    new_reps = int(input(
+                        'Please enter the new amount of reps you wish to complete per set. (Must be in range: 6 - 15)\n'))
+                    if new_reps <= 15 and new_reps >= 6:
+                        workouts.update_cell(wk_num + 2, 4, new_reps)
+                        new_total_load = new_reps * int(wk_to_edit[4])
+                        workouts.update_cell(wk_num + 2, 6, new_total_load)
+                        print(f"The reps for workout {wk_num} "
+                              f"has been changed to {new_reps} and"
+                              f" the new total load is {new_total_load}")
+                        break
+                    else:
+                        print(
+                            'Invalid input. Please enter a valid number between 6 - 15.')
+                except ValueError:
+                    print('Value entered is invalid.')
         elif user_input == '5':
             new_weight = input(
                 'Please enter the desired weight for this exercise:\n')
