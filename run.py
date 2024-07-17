@@ -290,5 +290,9 @@ def main():
     user_choice()
 
 
-# main()
-edit_workout()
+# This ensures main() runs only when the script is executed directly
+if __name__ == '__main__':
+    main()
+
+
+# edit_workout()
