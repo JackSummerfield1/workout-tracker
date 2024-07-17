@@ -328,9 +328,23 @@ def edit_workout():
                 except ValueError:
                     print('Value entered is invalid.')
         elif user_input == '5':
-            new_weight = input(
-                'Please enter the desired weight for this exercise:\n')
-            workouts.update_cell(wk_num + 2, 5, new_weight)
+            while True:
+                # Ensures a valid weight is specified, must be humanely possible, hence the range provided (1 - 500kg)
+                try:
+                    new_weight = int(
+                        input('Please enter the weight being moved in kg. (E.g. 75)\n'))
+                    if new_weight <= 500 and new_weight > 0:
+                        workouts.update_cell(wk_num + 2, 5, new_weight)
+                        new_total_load = new_weight * int(wk_to_edit[3])
+                        workouts.update_cell(wk_num + 2, 6, new_total_load)
+                        print(f"The weight for workout {wk_num} "
+                              f"has been changed to {new_weight} and"
+                              f" the new total load is {new_total_load}")
+                        break
+                    else:
+                        print('Invalid input. Please enter a number between 1 - 500.')
+                except ValueError:
+                    print('Value entered is invalid.')
 
 
 def user_choice():
