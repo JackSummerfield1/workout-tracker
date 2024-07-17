@@ -66,7 +66,20 @@ def menu_decorator():
     # Code above is simply decoration to the terminal menu
 
 
-def date_valid():
+def valid_date(date):
+    '''
+    Handles date validation, ensures a correct date is entered in the provided format
+    Credit to Max O'Didily with help on this: https://www.youtube.com/watch?v=5n_JagFqWeg
+    '''
+    try:
+        datetime.strptime(date, '%d/%m/%Y')
+        # Ensures date is valid and in correct format
+        return True
+    except ValueError:
+        return False
+
+
+def date_insert():
     '''
     Handles correct date entered, loops back through if incorrect date is entered.
     '''
@@ -75,19 +88,9 @@ def date_valid():
         date = input(
             'Please enter a date for this workout in the format DD/MM/YYYY.\n')
 
-        def is_date(date):
-            '''
-            Handles date validation, ensures a correct date is entered in the provided format
-            Credit to Max O'Didily with help on this: https://www.youtube.com/watch?v=5n_JagFqWeg
-            '''
-            try:
-                date_object = datetime.strptime(date, '%d/%m/%Y')
-                # Ensures date is valid and in correct format
-                return True
-            except ValueError:
-                return False
+        valid_date(date)
 
-        if is_date(date):
+        if valid_date(date):
             print(f"The date entered ({date}) is valid.")
             row.insert(0, date)
             # Inserts date attr at correct column on google sheet, (ind 0)
@@ -185,7 +188,7 @@ def add_workout():
     Handles the user adding a workout to their program, including a variety of
     relevant attributes
     '''
-    date_valid()
+    date_insert()
     exercise_valid()
     assign_workout_num()
     save_workout()
