@@ -66,6 +66,19 @@ def menu_decorator():
     # Code above is simply decoration to the terminal menu
 
 
+def edit_menu_decorator():
+    print('*' * 35)
+    print('\nPlease select which attribute you wish to change (1 - 6):\n')
+    print('1. Date\n')
+    print('2. Exercise Type\n')
+    print('3. Sets\n')
+    print('4. Reps\n')
+    print('5. Weight\n')
+    print('6. Exit Editor\n')
+    print('*' * 35)
+    # Code above is simply decoration to the terminal menu
+
+
 def valid_date(date):
     '''
     Handles date validation, ensures a correct date is entered in the provided format
@@ -153,7 +166,7 @@ def date_insert():
             print(f"The date entered ({date}) is invalid.")
 
 
-def exercise_valid():
+def exercise_insert():
     '''
     Handles all exercises attributes, ensuring all data input is valid and
     abides by the boundaries set.
@@ -200,7 +213,7 @@ def add_workout():
     relevant attributes
     '''
     date_insert()
-    exercise_valid()
+    exercise_insert()
     assign_workout_num()
     save_workout()
 
@@ -247,6 +260,9 @@ def edit_workout():
     wk_to_edit = data[wk_num + 1]
     print(wk_to_edit)
 
+    print('*' * 35)
+    print('\nWelcome to ASUMA Workout Editor\n')
+
     while True:
         user_input = input('\nSelect an option, 1 - 5:\n\n')
         if user_input == '1':
@@ -269,8 +285,6 @@ def edit_workout():
             new_weight = input(
                 'Please enter the desired weight for this exercise:\n')
             workouts.update_cell(wk_num + 2, 5, new_weight)
-        else:
-            print('Invalid option, please choose another operation.')
 
 
 def user_choice():
@@ -305,8 +319,8 @@ def main():
 
 
 # This ensures main() runs only when the script is executed directly
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
 
 
-# edit_workout()
+edit_workout()
