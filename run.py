@@ -226,11 +226,17 @@ def view_workouts():
     # Gathers all of the workouts from the google sheet
     last_five_rows = all_workout_rows[-5:]
     # Collates the last 5 workout entries made to the google sheet]
-    heading = ['Date:', 'Exercise Type:', 'Sets:',
-               'Reps:', 'Weight:', 'Total Load:', 'Number:']
+    heading = 'Date:, Exercise Type:, Sets:, Reps:, Weight:, Total Load:, Number:\n'
     print('\nThe 5 most recent workouts in your Google sheet are as follows:\n')
     print(heading)
-    pprint(last_five_rows)
+    for row in last_five_rows:
+        # Iterates through each item in the row and ensures that they
+        # have even amount of whitespace per category
+        print(f"{row[0]}, {row[1] + (16 - len(row[1])) * ' '}, "
+              f"{row[2] + (2 - len(row[2])) * ' '},"
+              f"{row[3] + (2 - len(row[3])) * ' '}, "
+              f"{row[4] + (3 - len(row[4])) * ' '}, "
+              f"{row[5] + (4 - len(row[5])) * ' '}, {row[6]}")
 
 
 def edit_workout():
