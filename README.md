@@ -163,6 +163,7 @@ The following sources have helped me a ton whilst creating this project, these h
   [Free Code Camp](https://www.freecodecamp.org/news/python-switch-statement-switch-case-example/)
 - For creating the flow chart for the program:
   [ChatGPT](https://chatgpt.com/)
+- Credit to Code Institute helping with the use of an API for the google worksheet and linking my program to the external source.
 
 ## Acknowledgements
 
