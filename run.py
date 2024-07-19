@@ -201,6 +201,11 @@ def exercise_insert():
 
 
 def assign_workout_num():
+    '''
+    Handles assigning a number to each workout, this allows
+    for specific workouts to be targeted later on during the edit
+    and delete processes
+    '''
     data = workouts.get_all_values()
     num = len(data) - 1
     row.insert(6, num)
