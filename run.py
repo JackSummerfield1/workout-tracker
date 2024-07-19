@@ -390,18 +390,21 @@ def user_choice():
     while True:
         # Makes sure a valid option must be entered
         user_input = input('\nSelect an option, 1 - 5:\n\n')
-        if user_input == '1':
-            add_workout()
-        elif user_input == '2':
-            view_workouts()
-        elif user_input == '3':
-            edit_workout()
-        elif user_input == '4':
-            break
-        elif user_input == '5':
-            break
-        else:
-            print('Invalid option, please choose another operation.')
+        # Credit to https://www.freecodecamp.org/news/python-switch-statement-switch-case-example/
+        # Using a match-case scenario instead of if else to improve performance
+        match user_input:
+            case '1':
+                add_workout()
+            case '2':
+                view_workouts()
+            case '3':
+                edit_workout()
+            case '4':
+                del_workout()
+            case '5':
+                break
+            case _:
+                print('Invalid option, please choose another operation.')
 
 
 def main():
@@ -413,8 +416,5 @@ def main():
 
 
 # This ensures main() runs only when the script is executed directly
-# if __name__ == '__main__':
-#     main()
-
-
-del_workout()
+if __name__ == '__main__':
+    main()
