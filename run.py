@@ -40,9 +40,6 @@ class Exercise:
 
 
 def menu_decorator():
-    print('*' * 35)
-    print('\nWelcome to ASUMA Fitness Tracker\n')
-    print('*' * 35)
     print('\nPlease select one of the following options (1-5)...\n')
     print('1. Add Workout\n')
     print('2. View Last 5 Workouts\n')
@@ -91,6 +88,7 @@ def validate_exercise_type():
         exercise_type = input(
             'Please enter your desired exercise. (E.g. Pushup or Pullup)\n')
         if len(exercise_type) <= 16 and exercise_type.isalpha():
+            print(f"The exercise type ({exercise_type}) is valid.")
             return exercise_type
         else:
             print('Invalid input. Please enter a valid exercise type.')
@@ -109,6 +107,7 @@ def validate_sets():
                       'you wish to complete. (E.g. 3)\n'))
             if sets <= 5 and sets > 0:
                 # Ensures value entered is within correct range
+                print(f"The sets ({sets}) are valid.")
                 return sets
             else:
                 print('Invalid input. Please enter a number between 1 - 5.')
@@ -129,6 +128,7 @@ def validate_reps():
                 ' (Must be in range: 6 - 15)\n'))
             if reps <= 15 and reps >= 6:
                 # Ensures value entered is in correct range
+                print(f"The reps ({reps}) are valid.")
                 return reps
             else:
                 print('Invalid input. Please enter a '
@@ -150,6 +150,7 @@ def validate_weight():
                       'being moved in kg. (E.g. 75)\n'))
             if weight <= 500 and weight > 0:
                 # Ensures value entered is in correct range
+                print(f"The weight ({weight}) is valid.")
                 return weight
             else:
                 print('Invalid input. Please enter a number between 1 - 500.')
@@ -425,11 +426,18 @@ def del_workout():
     if choice:
         # Handles deleting the row the user requests to be deleted
         workouts.delete_rows(choice + 2)
+
+        print('*' * 35)
+        print('\nWorksheet is being updated...\n')
+
         for row in data[choice + 2:]:
             # Decreases each workout number by 1,
             # that comes after the one to be deleted
             new_wk_num = int(row[6]) - 1
             workouts.update_cell(int(row[6]) + 1, 7, new_wk_num)
+
+        print('Worksheet has been updated successfully.\n')
+        print('*' * 35)
 
 
 def user_choice():
@@ -442,6 +450,7 @@ def user_choice():
     code is reiterated through the while loop.
     '''
     while True:
+        menu_decorator()
         # Makes sure a valid option must be entered
         user_input = input('\nSelect an option, 1 - 5:\n\n')
         # Credit to:
@@ -466,7 +475,9 @@ def main():
     '''
     Handles all functions and classes
     '''
-    menu_decorator()
+    print('*' * 35)
+    print('\nWelcome to ASUMA Fitness Tracker\n')
+    print('*' * 35)
     user_choice()
 
 
