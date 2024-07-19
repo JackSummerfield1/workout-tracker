@@ -374,6 +374,12 @@ def del_workout():
         except ValueError:
             print('Input is invalid, please try again')
 
+    if choice:
+        workouts.delete_rows(choice + 2)
+        for row in data[choice + 2:]:
+            new_wk_num = int(row[6]) - 1
+            workouts.update_cell(int(row[6]) + 1, 7, new_wk_num)
+
 
 def user_choice():
     '''
