@@ -40,23 +40,23 @@ Click here to view the Google Sheet that this program interacts with (READ-ONLY)
 
 1. When starting the program the user will be presented with a welcome message and a menu with 5 options to choose from.
 
-![Picture-of-welcome-screen]
+![Picture-of-welcome-screen](README-images/1.png)
 
 2. When clicking on the `1. Add Workout` option, the program prompts you to answer a few questions relating to the workout you wish to add. Once all values have been entered, they get sent off and stored into the Google Sheet linked at the top of this README.md file. Below are the questions you should expect to answer
 
-![Picture-of-add-workout-qs]
+![Picture-of-add-workout-qs](README-images/2.png)
 
 3. When clicking on the `2. View Last 5 Workouts` option, the program gathers the 5 most recent workouts that have been updated to the Google Worksheet and prints the data as a table to the terminal with their respective headings above.
 
-![Picture-of-view-workouts]
+![Picture-of-view-workouts](README-images/3.png)
 
 4. When clicking on the `3. Edit Workout` option, the program requests which workout it is you wish to edit (including a range of numbers you should choose from). Once the workout has been chosen, you are taken to a welcome screen in which it prompts you to choose an attribute you wish to edit, all data that has been edited in the program will be updated also on the Google sheet.
 
-![Picture-of-edit-workout-welcome-screen]
+![Picture-of-edit-workout-welcome-screen](README-images/4.png)
 
 5. When clicking on the `4. Delete Workout` option, the program, again, requests which workout it is you wish to delete and removes it from the Google sheet.
 
-![Picture-of-delete-workout]
+![Picture-of-delete-workout](README-images/5.png)
 
 6. Finally, when clicking on the `5. Exit` option, the program ends and needs to be restarted.
 
@@ -64,7 +64,7 @@ Click here to view the Google Sheet that this program interacts with (READ-ONLY)
 
 The logic of the program can be seen in the presented flow chart:
 
-![Flow-chart-of-program]
+![Flow-chart-of-program](README-images/6.png)
 
 ## Technologies Used
 
