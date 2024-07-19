@@ -68,8 +68,10 @@ def edit_menu_decorator():
 
 def valid_date(date):
     '''
-    Handles date validation, ensures a correct date is entered in the provided format
-    Credit to Max O'Didily with help on this: https://www.youtube.com/watch?v=5n_JagFqWeg
+    Handles date validation, ensures a correct date is 
+    entered in the provided format
+    Credit to Max O'Didily with help on this:
+    https://www.youtube.com/watch?v=5n_JagFqWeg
     '''
     try:
         datetime.strptime(date, '%d/%m/%Y')
@@ -103,7 +105,8 @@ def validate_sets():
         # must be a feasible integer between 1 and 5
         try:
             sets = int(
-                input('Please enter the amount of sets you wish to complete. (E.g. 3)\n'))
+                input('Please enter the amount of sets '
+                      'you wish to complete. (E.g. 3)\n'))
             if sets <= 5 and sets > 0:
                 # Ensures value entered is within correct range
                 return sets
@@ -128,7 +131,8 @@ def validate_reps():
                 # Ensures value entered is in correct range
                 return reps
             else:
-                print('Invalid input. Please enter a valid number between 6 - 15.')
+                print('Invalid input. Please enter a '
+                      'valid number between 6 - 15.')
         except ValueError:
             print('Value entered is invalid.')
 
@@ -142,7 +146,8 @@ def validate_weight():
         # hence the range provided (1 - 500kg)
         try:
             weight = int(
-                input('Please enter the weight being moved in kg. (E.g. 75)\n'))
+                input('Please enter the weight '
+                      'being moved in kg. (E.g. 75)\n'))
             if weight <= 500 and weight > 0:
                 # Ensures value entered is in correct range
                 return weight
@@ -154,10 +159,12 @@ def validate_weight():
 
 def date_insert():
     '''
-    Handles correct date entered, loops back through if incorrect date is entered.
+    Handles correct date entered, loops back through
+    if incorrect date is entered.
     '''
     while True:
-        # While loop used so that if user input is invalid, the code loops back through until valid date entered
+        # While loop used so that if user input is invalid, the code loops
+        # back through until valid date entered
         date = input(
             'Please enter a date for this workout in the format DD/MM/YYYY.\n')
 
@@ -240,8 +247,10 @@ def view_workouts():
     # Gathers all of the workouts from the google sheet
     last_five_rows = all_workout_rows[-5:]
     # Collates the last 5 workout entries made to the google sheet]
-    heading = 'Date:, Exercise Type:, Sets:, Reps:, Weight:, Total Load:, Number:\n'
-    print('\nThe 5 most recent workouts in your Google sheet are as follows:\n')
+    heading = 'Date:, Exercise Type:, Sets:, Reps:, Weight:, '
+    'Total Load:, Number:\n'
+    print('\nThe 5 most recent workouts in your Google '
+          'sheet are as follows:\n')
     print(heading)
     for row in last_five_rows:
         # Iterates through each item in the row and ensures that they
@@ -338,7 +347,8 @@ def edit_workout():
                             break
                         else:
                             print(
-                                'Invalid input. Please enter a number between 1 - 5.')
+                                'Invalid input. Please enter a '
+                                'number between 1 - 5.')
                     except ValueError:
                         print('Value entered is invalid.')
             case '4':
@@ -348,7 +358,8 @@ def edit_workout():
                     try:
                         new_reps = int(input(
                             'Please enter the new amount of reps you wish'
-                            ' to complete per set. (Must be in range: 6 - 15)\n'))
+                            ' to complete per set. '
+                            '(Must be in range: 6 - 15)\n'))
                         if new_reps <= 15 and new_reps >= 6:
                             workouts.update_cell(wk_num + 2, 4, new_reps)
                             new_total_load = new_reps * int(wk_to_edit[4])
@@ -369,7 +380,8 @@ def edit_workout():
                     # humanely possible, hence the range provided (1 - 500kg)
                     try:
                         new_weight = int(
-                            input('Please enter the weight being moved in kg. (E.g. 75)\n'))
+                            input('Please enter the weight being moved in kg.'
+                                  ' (E.g. 75)\n'))
                         if new_weight <= 500 and new_weight > 0:
                             workouts.update_cell(wk_num + 2, 5, new_weight)
                             new_total_load = new_weight * int(wk_to_edit[3])
@@ -380,7 +392,8 @@ def edit_workout():
                             break
                         else:
                             print(
-                                'Invalid input. Please enter a number between 1 - 500.')
+                                'Invalid input. Please enter a '
+                                'number between 1 - 500.')
                     except ValueError:
                         print('Value entered is invalid.')
             case '6':
@@ -431,7 +444,8 @@ def user_choice():
     while True:
         # Makes sure a valid option must be entered
         user_input = input('\nSelect an option, 1 - 5:\n\n')
-        # Credit to https://www.freecodecamp.org/news/python-switch-statement-switch-case-example/
+        # Credit to:
+        # https://www.freecodecamp.org/news/python-switch-statement-switch-case-example/
         # Using a match-case scenario instead of if else to improve performance
         match user_input:
             case '1':
