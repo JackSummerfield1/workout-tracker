@@ -196,6 +196,8 @@ def exercise_insert():
     print(f"Reps: x{exercise_attr.reps}\n")
     print(f"Weight: {exercise_attr.weight}kg\n")
     print(f"Total Load: {exercise_attr.calculate_load()}kg")
+    # Prints to the user exactly what they have entered to be sent
+    # to the google worksheet
 
 
 def assign_workout_num():
