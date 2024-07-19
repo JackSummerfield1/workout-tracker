@@ -20,18 +20,6 @@ row = []
 # List of data to be sent to google sheet
 
 
-class User:
-    '''
-    Creates an instance of User
-    '''
-
-    def __init__(self, username, age, height, weight):
-        self.username = username
-        self.age = age
-        self.height = height
-        self.weight = weight
-
-
 class Exercise:
     '''
     Creates an instance of Exercise
