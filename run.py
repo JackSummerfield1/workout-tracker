@@ -325,7 +325,8 @@ def edit_workout():
                     # strings longer than 16 char
                     new_exercise_type = input(
                         'Please enter your new exercise.\n')
-                    if len(new_exercise_type) <= 16 and new_exercise_type.isalpha():
+                    if (len(new_exercise_type) <= 16
+                            and new_exercise_type.isalpha()):
                         workouts.update_cell(wk_num + 2, 2, new_exercise_type)
                         print(f"The exercise type for workout {wk_num} "
                               f"has been changed to {new_exercise_type}")
