@@ -64,7 +64,7 @@ def edit_menu_decorator():
     print('5. Weight\n')
     print('6. Exit Editor\n')
     print('*' * 35)
-    # Code above is simply decoration to the terminal menu
+    # Code above is simply decoration for the terminal menu in the editor func
 
 
 def valid_date(date):
@@ -81,8 +81,12 @@ def valid_date(date):
 
 
 def validate_exercise_type():
+    '''
+    Handles data validation, specifically the exercise_type attr
+    '''
     while True:
-        # Ensures a valid exercise is provided, no integers or strings longer than 16 char
+        # Ensures a valid exercise is provided,
+        # no integers or strings longer than 16 char
         exercise_type = input(
             'Please enter your desired exercise. (E.g. Pushup or Pullup)\n')
         if len(exercise_type) <= 16 and exercise_type.isalpha():
@@ -92,12 +96,17 @@ def validate_exercise_type():
 
 
 def validate_sets():
+    '''
+    Handles data validation, specifically the sets attr
+    '''
     while True:
-        # Ensures a valid amount of sets are provided, must be a feasible integer between 1 and 5
+        # Ensures a valid amount of sets are provided,
+        # must be a feasible integer between 1 and 5
         try:
             sets = int(
                 input('Please enter the amount of sets you wish to complete. (E.g. 3)\n'))
             if sets <= 5 and sets > 0:
+                # Ensures value entered is within correct range
                 return sets
             else:
                 print('Invalid input. Please enter a number between 1 - 5.')
@@ -106,12 +115,18 @@ def validate_sets():
 
 
 def validate_reps():
+    '''
+    Handles data validation, specifically the reps attr
+    '''
     while True:
-        # Ensures a valid amount of reps are allocated, must be a reasonable integer in range 6 - 15
+        # Ensures a valid amount of reps are allocated,
+        # must be a reasonable integer in range 6 - 15
         try:
             reps = int(input(
-                'Please enter the amount of reps you wish to complete per set. (Must be in range: 6 - 15)\n'))
+                'Please enter the amount of reps you wish to complete per set.'
+                ' (Must be in range: 6 - 15)\n'))
             if reps <= 15 and reps >= 6:
+                # Ensures value entered is in correct range
                 return reps
             else:
                 print('Invalid input. Please enter a valid number between 6 - 15.')
@@ -120,12 +135,17 @@ def validate_reps():
 
 
 def validate_weight():
+    '''
+    Handles data validation, specifically the weight attr
+    '''
     while True:
-        # Ensures a valid weight is specified, must be humanely possible, hence the range provided (1 - 500kg)
+        # Ensures a valid weight is specified, must be humanely possible,
+        # hence the range provided (1 - 500kg)
         try:
             weight = int(
                 input('Please enter the weight being moved in kg. (E.g. 75)\n'))
             if weight <= 500 and weight > 0:
+                # Ensures value entered is in correct range
                 return weight
             else:
                 print('Invalid input. Please enter a number between 1 - 500.')
