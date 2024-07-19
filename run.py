@@ -68,7 +68,7 @@ def edit_menu_decorator():
 
 def valid_date(date):
     '''
-    Handles date validation, ensures a correct date is 
+    Handles date validation, ensures a correct date is
     entered in the provided format
     Credit to Max O'Didily with help on this:
     https://www.youtube.com/watch?v=5n_JagFqWeg
@@ -438,7 +438,7 @@ def user_choice():
     ie. add, edit, view or delete workouts.
     Use of a while loop to ensure the value entered is a number between 1-5,
     any values out of this range
-    causes an error message to be displayed and the 
+    causes an error message to be displayed and the
     code is reiterated through the while loop.
     '''
     while True:
