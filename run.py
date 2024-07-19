@@ -266,11 +266,13 @@ def edit_workout():
     while True:
         try:
             choice = int(input(
-                f"Please enter the number of the workout you wish to edit, num should be in range 0 - {len(data) - 2}\n"))
+                f"Please enter the number of the workout you wish to edit, "
+                f"num should be in range 0 - {len(data) - 2}\n"))
             if choice == 0 or (choice <= (len(data) - 2) and choice >= 0):
                 # Allows user to choose a workout number in the correct range
                 print(f"You have selected workout: {choice}\n")
-                # Informs the user which workout they have selected to be edited
+                # Informs the user which workout they
+                # have selected to be edited
                 wk_num = wk_num + choice
                 break
             else:
@@ -279,6 +281,7 @@ def edit_workout():
             print('Input is invalid, please try again')
 
     wk_to_edit = data[wk_num + 1]
+    # Obtains the correct workout that the user wants to edit
     print(wk_to_edit)
 
     print('*' * 35)
@@ -290,13 +293,17 @@ def edit_workout():
         match user_input:
             case '1':
                 while True:
-                    # While loop used so that if user input is invalid, the code loops back through until valid date entered
+                    # While loop used so that if user input is invalid,
+                    # the code loops back through until valid date entered
                     new_date = input(
-                        'Please enter the new date for this workout in the format DD/MM/YYYY.\n')
+                        'Please enter the new date for this workout in the'
+                        ' format DD/MM/YYYY.\n')
 
                     valid_date(new_date)
 
                     if valid_date(new_date):
+                        # Ensures a valid date has been entered and then
+                        # pushed to the google sheet
                         workouts.update_cell(wk_num + 2, 1, new_date)
                         print(f"The date for workout {wk_num} "
                               f"has been changed to {new_date}")
@@ -305,7 +312,8 @@ def edit_workout():
                         print(f"The date entered ({new_date}) is invalid.")
             case '2':
                 while True:
-                    # Ensures a valid exercise is provided, no integers or strings longer than 16 char
+                    # Ensures a valid exercise is provided, no integers or
+                    # strings longer than 16 char
                     new_exercise_type = input(
                         'Please enter your new exercise.\n')
                     if len(new_exercise_type) <= 16 and new_exercise_type.isalpha():
@@ -314,13 +322,16 @@ def edit_workout():
                               f"has been changed to {new_exercise_type}")
                         break
                     else:
-                        print('Invalid input. Please enter a valid exercise type.')
+                        print('Invalid input. '
+                              'Please enter a valid exercise type.')
             case '3':
                 while True:
+                    # Ensures a valid amount of sets are entered
                     try:
                         new_sets = int(
                             input(
-                                'Please enter the desired sets for this exercise:\n'))
+                                'Please enter the desired '
+                                'sets for this exercise:\n'))
                         if new_sets <= 5 and new_sets > 0:
                             workouts.update_cell(wk_num + 2, 3, new_sets)
                             print(f"The sets for workout {wk_num} "
@@ -333,10 +344,12 @@ def edit_workout():
                         print('Value entered is invalid.')
             case '4':
                 while True:
-                    # Ensures a valid amount of reps are allocated, must be a reasonable integer in range 6 - 15
+                    # Ensures a valid amount of reps are allocated, must be a
+                    # reasonable integer in range 6 - 15
                     try:
                         new_reps = int(input(
-                            'Please enter the new amount of reps you wish to complete per set. (Must be in range: 6 - 15)\n'))
+                            'Please enter the new amount of reps you wish'
+                            ' to complete per set. (Must be in range: 6 - 15)\n'))
                         if new_reps <= 15 and new_reps >= 6:
                             workouts.update_cell(wk_num + 2, 4, new_reps)
                             new_total_load = new_reps * int(wk_to_edit[4])
@@ -347,12 +360,14 @@ def edit_workout():
                             break
                         else:
                             print(
-                                'Invalid input. Please enter a valid number between 6 - 15.')
+                                'Invalid input. Please enter a valid'
+                                ' number between 6 - 15.')
                     except ValueError:
                         print('Value entered is invalid.')
             case '5':
                 while True:
-                    # Ensures a valid weight is specified, must be humanely possible, hence the range provided (1 - 500kg)
+                    # Ensures a valid weight is specified, must be
+                    # humanely possible, hence the range provided (1 - 500kg)
                     try:
                         new_weight = int(
                             input('Please enter the weight being moved in kg. (E.g. 75)\n'))
@@ -380,30 +395,39 @@ def del_workout():
     while True:
         try:
             choice = int(input(
-                f"Please enter the number of the workout you wish to delete, num should be in range 0 - {len(data) - 2}\n"))
+                f"Please enter the number of the workout you wish to delete,"
+                f" num should be in range 0 - {len(data) - 2}\n"))
             if choice == 0 or (choice <= (len(data) - 2) and choice >= 0):
                 # Allows user to choose a workout number in the correct range
                 print(f"You have selected workout: {choice}\n")
-                # Informs the user which workout they have selected to be edited
+                # Informs the user which workout they
+                # have selected to be edited
                 break
             else:
-                print('Input must be within the appropriate range, stated above.')
+                print('Input must be within the appropriate range, '
+                      'stated above.')
                 continue
         except ValueError:
             print('Input is invalid, please try again')
 
     if choice:
+        # Handles deleting the row the user requests to be deleted
         workouts.delete_rows(choice + 2)
         for row in data[choice + 2:]:
+            # Decreases each workout number by 1,
+            # that comes after the one to be deleted
             new_wk_num = int(row[6]) - 1
             workouts.update_cell(int(row[6]) + 1, 7, new_wk_num)
 
 
 def user_choice():
     '''
-    Handles the users choice on what they want to do, ie. add, edit, view or delete workouts.
-    Use of a while loop to ensure the value entered is a number between 1-5, any values out of this range
-    causes an error message to be displayed and the code is reiterated through the while loop.
+    Handles the users choice on what they want to do,
+    ie. add, edit, view or delete workouts.
+    Use of a while loop to ensure the value entered is a number between 1-5,
+    any values out of this range
+    causes an error message to be displayed and the 
+    code is reiterated through the while loop.
     '''
     while True:
         # Makes sure a valid option must be entered
