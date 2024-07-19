@@ -260,89 +260,92 @@ def edit_workout():
     while True:
         edit_menu_decorator()
         user_input = input('\nSelect an option, 1 - 6:\n\n')
-        if user_input == '1':
-            while True:
-                # While loop used so that if user input is invalid, the code loops back through until valid date entered
-                new_date = input(
-                    'Please enter the new date for this workout in the format DD/MM/YYYY.\n')
+        match user_input:
+            case '1':
+                while True:
+                    # While loop used so that if user input is invalid, the code loops back through until valid date entered
+                    new_date = input(
+                        'Please enter the new date for this workout in the format DD/MM/YYYY.\n')
 
-                valid_date(new_date)
+                    valid_date(new_date)
 
-                if valid_date(new_date):
-                    workouts.update_cell(wk_num + 2, 1, new_date)
-                    print(f"The date for workout {wk_num} "
-                          f"has been changed to {new_date}")
-                    break
-                else:
-                    print(f"The date entered ({new_date}) is invalid.")
-        elif user_input == '2':
-            while True:
-                # Ensures a valid exercise is provided, no integers or strings longer than 16 char
-                new_exercise_type = input(
-                    'Please enter your new exercise.\n')
-                if len(new_exercise_type) <= 16 and new_exercise_type.isalpha():
-                    workouts.update_cell(wk_num + 2, 2, new_exercise_type)
-                    print(f"The exercise type for workout {wk_num} "
-                          f"has been changed to {new_exercise_type}")
-                    break
-                else:
-                    print('Invalid input. Please enter a valid exercise type.')
-        elif user_input == '3':
-            while True:
-                try:
-                    new_sets = int(
-                        input(
-                            'Please enter the desired sets for this exercise:\n'))
-                    if new_sets <= 5 and new_sets > 0:
-                        workouts.update_cell(wk_num + 2, 3, new_sets)
-                        print(f"The sets for workout {wk_num} "
-                              f"has been changed to {new_sets}")
+                    if valid_date(new_date):
+                        workouts.update_cell(wk_num + 2, 1, new_date)
+                        print(f"The date for workout {wk_num} "
+                              f"has been changed to {new_date}")
                         break
                     else:
-                        print('Invalid input. Please enter a number between 1 - 5.')
-                except ValueError:
-                    print('Value entered is invalid.')
-        elif user_input == '4':
-            while True:
-                # Ensures a valid amount of reps are allocated, must be a reasonable integer in range 6 - 15
-                try:
-                    new_reps = int(input(
-                        'Please enter the new amount of reps you wish to complete per set. (Must be in range: 6 - 15)\n'))
-                    if new_reps <= 15 and new_reps >= 6:
-                        workouts.update_cell(wk_num + 2, 4, new_reps)
-                        new_total_load = new_reps * int(wk_to_edit[4])
-                        workouts.update_cell(wk_num + 2, 6, new_total_load)
-                        print(f"The reps for workout {wk_num} "
-                              f"has been changed to {new_reps} and"
-                              f" the new total load is {new_total_load}")
+                        print(f"The date entered ({new_date}) is invalid.")
+            case '2':
+                while True:
+                    # Ensures a valid exercise is provided, no integers or strings longer than 16 char
+                    new_exercise_type = input(
+                        'Please enter your new exercise.\n')
+                    if len(new_exercise_type) <= 16 and new_exercise_type.isalpha():
+                        workouts.update_cell(wk_num + 2, 2, new_exercise_type)
+                        print(f"The exercise type for workout {wk_num} "
+                              f"has been changed to {new_exercise_type}")
                         break
                     else:
-                        print(
-                            'Invalid input. Please enter a valid number between 6 - 15.')
-                except ValueError:
-                    print('Value entered is invalid.')
-        elif user_input == '5':
-            while True:
-                # Ensures a valid weight is specified, must be humanely possible, hence the range provided (1 - 500kg)
-                try:
-                    new_weight = int(
-                        input('Please enter the weight being moved in kg. (E.g. 75)\n'))
-                    if new_weight <= 500 and new_weight > 0:
-                        workouts.update_cell(wk_num + 2, 5, new_weight)
-                        new_total_load = new_weight * int(wk_to_edit[3])
-                        workouts.update_cell(wk_num + 2, 6, new_total_load)
-                        print(f"The weight for workout {wk_num} "
-                              f"has been changed to {new_weight} and"
-                              f" the new total load is {new_total_load}")
-                        break
-                    else:
-                        print('Invalid input. Please enter a number between 1 - 500.')
-                except ValueError:
-                    print('Value entered is invalid.')
-        elif user_input == '6':
-            break
-        else:
-            print('Invalid option, please choose another operation.')
+                        print('Invalid input. Please enter a valid exercise type.')
+            case '3':
+                while True:
+                    try:
+                        new_sets = int(
+                            input(
+                                'Please enter the desired sets for this exercise:\n'))
+                        if new_sets <= 5 and new_sets > 0:
+                            workouts.update_cell(wk_num + 2, 3, new_sets)
+                            print(f"The sets for workout {wk_num} "
+                                  f"has been changed to {new_sets}")
+                            break
+                        else:
+                            print(
+                                'Invalid input. Please enter a number between 1 - 5.')
+                    except ValueError:
+                        print('Value entered is invalid.')
+            case '4':
+                while True:
+                    # Ensures a valid amount of reps are allocated, must be a reasonable integer in range 6 - 15
+                    try:
+                        new_reps = int(input(
+                            'Please enter the new amount of reps you wish to complete per set. (Must be in range: 6 - 15)\n'))
+                        if new_reps <= 15 and new_reps >= 6:
+                            workouts.update_cell(wk_num + 2, 4, new_reps)
+                            new_total_load = new_reps * int(wk_to_edit[4])
+                            workouts.update_cell(wk_num + 2, 6, new_total_load)
+                            print(f"The reps for workout {wk_num} "
+                                  f"has been changed to {new_reps} and"
+                                  f" the new total load is {new_total_load}")
+                            break
+                        else:
+                            print(
+                                'Invalid input. Please enter a valid number between 6 - 15.')
+                    except ValueError:
+                        print('Value entered is invalid.')
+            case '5':
+                while True:
+                    # Ensures a valid weight is specified, must be humanely possible, hence the range provided (1 - 500kg)
+                    try:
+                        new_weight = int(
+                            input('Please enter the weight being moved in kg. (E.g. 75)\n'))
+                        if new_weight <= 500 and new_weight > 0:
+                            workouts.update_cell(wk_num + 2, 5, new_weight)
+                            new_total_load = new_weight * int(wk_to_edit[3])
+                            workouts.update_cell(wk_num + 2, 6, new_total_load)
+                            print(f"The weight for workout {wk_num} "
+                                  f"has been changed to {new_weight} and"
+                                  f" the new total load is {new_total_load}")
+                            break
+                        else:
+                            print(
+                                'Invalid input. Please enter a number between 1 - 500.')
+                    except ValueError:
+                        print('Value entered is invalid.')
+            case '6':
+                break
+            case _:
+                print('Invalid option, please choose another operation.')
 
 
 def del_workout():
