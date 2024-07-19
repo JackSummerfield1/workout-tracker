@@ -8,11 +8,11 @@ Each function was rigorously tested during development to ensure it is now fully
 
 Here is the result of the PEP8 validator testing:
 
-![Image-of-validated-code-start]
+![Image-of-validated-code-start](README-images/7.png)
 
 Here is the end of the code with an empty line following to prove the entirety of the code was passed through the validator:
 
-![Image-of-validated-code-end]
+![Image-of-validated-code-end](README-images/8.png)
 
 ### Manual Testing
 
